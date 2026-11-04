@@ -34,12 +34,12 @@
 <img width="1099" height="785" alt="image" src="https://github.com/user-attachments/assets/bea157da-c222-4337-beb4-6225a08927b6" />
 
 ### 3. Успешная отправка и сохранение в JSON
-<!-- ![Успешная отправка](docs/success.png) -->
-![Успешная отправка](docs/success.png)
+<img width="1080" height="675" alt="image" src="https://github.com/user-attachments/assets/b2c6b62b-b2ed-459a-8951-424f1a212d51" />
+
 
 ### 4. Таблица всех полученных заявок (GET `/submissions`)
-<!-- ![Таблица заявок](docs/submissions.png) -->
-![Таблица заявок](docs/submissions.png)
+<img width="1123" height="440" alt="image" src="https://github.com/user-attachments/assets/65f69822-9e33-4d20-aff3-ba87768e4c9e" />
+
 
 ---
 
