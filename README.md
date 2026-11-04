@@ -31,8 +31,7 @@
 
 
 ### 2. Валидация формы и вывод ошибок
-<!-- ![Ошибки валидации](docs/validation.png) -->
-![Ошибки валидации](docs/validation.png)
+<img width="1099" height="785" alt="image" src="https://github.com/user-attachments/assets/bea157da-c222-4337-beb4-6225a08927b6" />
 
 ### 3. Успешная отправка и сохранение в JSON
 <!-- ![Успешная отправка](docs/success.png) -->
