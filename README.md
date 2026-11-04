@@ -27,7 +27,8 @@
 ## Скриншоты работы приложения
 
 ### 1. Страница формы (GET `/`)
-![Форма](docs/form.png)
+<img width="1920" height="922" alt="laravel1" src="https://github.com/user-attachments/assets/bfaaaf3e-610d-4628-a554-43f8441f09fb" />
+
 
 ### 2. Валидация формы и вывод ошибок
 <!-- ![Ошибки валидации](docs/validation.png) -->
