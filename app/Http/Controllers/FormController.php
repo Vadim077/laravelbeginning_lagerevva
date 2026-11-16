@@ -7,16 +7,13 @@ use Illuminate\Support\Facades\File;
 
 class FormController extends Controller
 {
-    // 1. Показ страницы с формой (GET)
     public function showForm()
     {
         return view('form');
     }
 
-    // 2. Обработка отправки формы (POST), серверная валидация и сохранение в JSON
     public function submitForm(Request $request)
     {
-        // Серверная валидация полей
         $validated = $request->validate([
             'name'    => 'required|string|min:2|max:50',
             'email'   => 'required|email|max:100',
@@ -30,27 +27,21 @@ class FormController extends Controller
             'message.min'      => 'Сообщение должно содержать не менее 5 символов.',
         ]);
 
-        // Добавляем дату и время отправки
         $validated['created_at'] = now()->format('Y-m-d H:i:s');
 
-        // Путь к папке хранения JSON: storage/app/submissions
         $storageDir = storage_path('app/submissions');
         if (!File::exists($storageDir)) {
             File::makeDirectory($storageDir, 0755, true);
         }
 
-        // Генерируем уникальное имя файла
         $fileName = 'submission_' . uniqid() . '_' . time() . '.json';
         $filePath = $storageDir . DIRECTORY_SEPARATOR . $fileName;
 
-        // Сохраняем данные в формате JSON (с поддержкой русских букв)
         File::put($filePath, json_encode($validated, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
 
-        // Возвращаем пользователя обратно с сообщением об успехе
         return redirect()->route('form.show')->with('success', "Данные успешно сохранены в файл: {$fileName}");
     }
 
-    // 3. Вывод всех сохранённых данных в виде таблицы (GET)
     public function showSubmissions()
     {
         $storageDir = storage_path('app/submissions');
