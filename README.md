@@ -43,3 +43,9 @@
    php artisan serve
    ```
    Приложение доступно по адресу: `http://127.0.0.1:8000`
+
+   <img width="1179" height="570" alt="image" src="https://github.com/user-attachments/assets/6fb240aa-f755-494f-a5d0-021e843d287b" />
+
+   <img width="1212" height="750" alt="image" src="https://github.com/user-attachments/assets/3a351764-766b-4cde-948e-1d8fe8f0a27c" />
+
+
