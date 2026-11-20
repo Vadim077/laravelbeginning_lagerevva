@@ -28,66 +28,70 @@
     @if($posts->isEmpty())
         <p>Постов не найдено.</p>
     @else
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Заголовок</th>
-                    <th>Категория</th>
-                    <th>Теги</th>
-                    <th>Автор</th>
-                    <th>Просмотры</th>
-                    <th>Комментарии</th>
-                    <th>Статус</th>
-                    <th>Действия</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($posts as $post)
+        <div class="table-responsive">
+            <table>
+                <thead>
                     <tr>
-                        <td>{{ $post->id }}</td>
-                        <td>
-                            <a href="{{ route('posts.show', $post->id) }}" style="font-weight: bold; color: #2980b9; text-decoration: none;">
-                                {{ $post->title }}
-                            </a>
-                        </td>
-                        <td>
-                            @if($post->category)
-                                <span style="background: #e8f4fd; color: #1e88e5; padding: 3px 8px; border-radius: 12px; font-size: 12px;">
-                                    {{ $post->category->name }}
-                                </span>
-                            @else
-                                <span style="color: #999;">—</span>
-                            @endif
-                        </td>
-                        <td>
-                            @forelse($post->tags as $tag)
-                                <span style="background: #eee; padding: 2px 6px; border-radius: 4px; font-size: 11px;">#{{ $tag->name }}</span>
-                            @empty
-                                <span style="color: #aaa;">—</span>
-                            @endforelse
-                        </td>
-                        <td>{{ $post->user?->name ?? '—' }}</td>
-                        <td>{{ $post->views_count }}</td>
-                        <td>{{ $post->comments_count }}</td>
-                        <td>
-                            @if($post->is_published)
-                                <span style="color: green; font-weight: bold;">Опубликован</span>
-                            @else
-                                <span style="color: #e67e22;">Черновик</span>
-                            @endif
-                        </td>
-                        <td style="white-space: nowrap;">
-                            <a href="{{ route('posts.edit', $post->id) }}" style="color: #f39c12; margin-right: 8px; text-decoration: none;">Изменить</a>
-                            <form action="{{ route('posts.destroy', $post->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Удалить пост?');">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" style="background: none; border: none; color: #e74c3c; cursor: pointer; padding: 0;">Удалить</button>
-                            </form>
-                        </td>
+                        <th style="width: 40px;">ID</th>
+                        <th>Заголовок</th>
+                        <th>Категория</th>
+                        <th>Теги</th>
+                        <th>Автор</th>
+                        <th style="text-align: center;">Просмотры</th>
+                        <th style="text-align: center;">Комментарии</th>
+                        <th>Статус</th>
+                        <th style="min-width: 140px;">Действия</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach($posts as $post)
+                        <tr>
+                            <td>{{ $post->id }}</td>
+                            <td>
+                                <a href="{{ route('posts.show', $post->id) }}" style="font-weight: bold; color: #2980b9; text-decoration: none;">
+                                    {{ $post->title }}
+                                </a>
+                            </td>
+                            <td>
+                                @if($post->category)
+                                    <span style="background: #e8f4fd; color: #1e88e5; padding: 3px 8px; border-radius: 12px; font-size: 12px; white-space: nowrap;">
+                                        {{ $post->category->name }}
+                                    </span>
+                                @else
+                                    <span style="color: #999;">—</span>
+                                @endif
+                            </td>
+                            <td>
+                                <div style="display: flex; gap: 4px; flex-wrap: wrap;">
+                                    @forelse($post->tags as $tag)
+                                        <span style="background: #eee; padding: 2px 6px; border-radius: 4px; font-size: 11px; white-space: nowrap;">#{{ $tag->name }}</span>
+                                    @empty
+                                        <span style="color: #aaa;">—</span>
+                                    @endforelse
+                                </div>
+                            </td>
+                            <td style="white-space: nowrap;">{{ $post->user?->name ?? '—' }}</td>
+                            <td style="text-align: center;">{{ $post->views_count }}</td>
+                            <td style="text-align: center;">{{ $post->comments_count }}</td>
+                            <td style="white-space: nowrap;">
+                                @if($post->is_published)
+                                    <span style="color: green; font-weight: bold;">Опубликован</span>
+                                @else
+                                    <span style="color: #e67e22;">Черновик</span>
+                                @endif
+                            </td>
+                            <td style="white-space: nowrap;">
+                                <a href="{{ route('posts.edit', $post->id) }}" style="color: #f39c12; margin-right: 8px; text-decoration: none;">Изменить</a>
+                                <form action="{{ route('posts.destroy', $post->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Удалить пост?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" style="background: none; border: none; color: #e74c3c; cursor: pointer; padding: 0;">Удалить</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     @endif
 @endsection

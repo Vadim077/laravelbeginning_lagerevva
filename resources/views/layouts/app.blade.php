@@ -6,7 +6,8 @@
     <title>@yield('title', 'Laravel Приложение')</title>
     <style>
         body { font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: #f8f9fa; color: #333; }
-        .container { max-width: 800px; margin: 40px auto; padding: 25px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .container { max-width: 1100px; margin: 40px auto; padding: 25px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .table-responsive { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
         .alert-success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; padding: 15px; border-radius: 5px; margin-bottom: 20px; }
         .alert-danger { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; padding: 15px; border-radius: 5px; margin-bottom: 20px; }
         .alert-danger ul { margin: 0; padding-left: 20px; }
@@ -21,15 +22,12 @@
     </style>
 </head>
 <body>
-    {{-- Вставка хедера --}}
     @include('partials.header')
 
-    {{-- Переменная область страницы --}}
     <div class="container">
         @yield('content')
     </div>
 
-    {{-- Вставка футера --}}
     @include('partials.footer')
 </body>
 </html>
